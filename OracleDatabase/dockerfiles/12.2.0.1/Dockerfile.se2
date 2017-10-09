@@ -71,7 +71,9 @@ RUN $ORACLE_BASE/oraInventory/orainstRoot.sh && \
 USER oracle
 WORKDIR /home/oracle
 
-VOLUME ["$ORACLE_BASE/oradata"]
+# We remove the volume entry so we can build images with the data contained within the image
+# We will use the -v flag if we need to mount oradata 
+# VOLUME ["$ORACLE_BASE/oradata"] 
 EXPOSE 1521 5500
     
 # Define default command to start Oracle Database. 
